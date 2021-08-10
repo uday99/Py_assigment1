@@ -1,0 +1,89 @@
+{% extends 'common.html' %}
+{% block content %}
+    <html>
+<head>
+    <title>UserDetails</title>
+</head>
+<body>
+<br>
+    <h1 align="center" style="color: aquamarine;text-align: center"> Search User Details </h1>
+<form method="post" action="{% url 'secondapp' %}">
+    {% csrf_token %}
+    <table align="center" >
+        <tbody>
+        <tr>
+        <td><input type="search" name="n1" placeholder="Enter User Name" required></td>
+        <td><button type="submit" class="btn btn-danger" >Search</button></td>
+    </tr>
+        </tbody>
+
+</table>
+
+</form>
+    <br>
+
+<h3 style="text-align: center"><a href="{% url 'firstapp' %}" class="btn btn-warning" >Register User</a></h3>
+
+    <br>
+{% if ud %}
+    {% for user in ud %}
+
+        <table align="center" border="2" width="500">
+    <tr>
+        <td>Name:</td>
+        <td>{{ user.name }}</td>
+    </tr>
+    <tr>
+        <td>Email:</td>
+        <td>{{ user.email}}</td>
+    </tr>
+    <tr>
+        <td>Phone Number:</td>
+        <td>{{ user.phoneno }}</td>
+    </tr>
+    <tr>
+        <td>Age:</td>
+        <td>{{ user.age }}</td>
+    </tr>
+    <tr>
+        <td>Date of Birth:</td>
+        <td>{{ user.dob }}</td>
+    </tr>
+
+
+
+</table>
+
+    {% endfor %}
+
+
+
+
+
+
+   {% else %}
+
+
+     <h3 align="center" style="color:red;">{{ error }}</h3>
+
+{% endif %}
+
+    {% if messages %}
+            {% for x in messages %}
+                <h1 style="font-size: 35px;text-align: center;color: aquamarine">{{ x }}</h1>
+
+            {% endfor %}
+
+
+        {% endif %}
+
+
+
+{% endblock %}
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends 'common.html' %}
+{% block content %}
+    <h1 align="center" style="color: deepskyblue">User Application Assignment</h1>
+
+        <div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-5">
+
+            <form method="post" action="{% url 'firstapp'%}">
+                {% csrf_token %}
+    <table align="center" class="form-control" >
+
+    <tr>
+        <td>{{ uf.name.label}}</td>
+        <td>{{ uf.name}}</td>
+
+    </tr>
+        <tr>
+        <td>{{ uf.email.label}}</td>
+        <td>{{ uf.email}}</td>
+
+    </tr>
+        <tr>
+        <td>{{ uf.phoneno.label}}</td>
+        <td>{{ uf.phoneno}}</td>
+
+    </tr>
+
+        <tr>
+        <td>{{ uf.age.label}}</td>
+        <td>{{ uf.age}}</td>
+
+    </tr>
+        <tr>
+        <td>{{ uf.dob.label}}</td>
+        <td>{{ uf.dob}}</td>
+
+    </tr>
+        <tr>
+            <td ><button type="submit" class="btn btn-primary" >Add User</button></td>
+            <td ><a href="{% url 'secondapp' %}" class="btn btn-warning" >Search User</a></td>
+        </tr>
+
+</table>
+
+
+</form>
+
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+{% endblock %}
+
+
+
